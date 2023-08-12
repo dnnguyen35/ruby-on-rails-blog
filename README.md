@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# ruby-on-rails-blog
+Study ruby-on-rails
