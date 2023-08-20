@@ -4,9 +4,9 @@
     <h2 class="py-4 border-bottom">Articles</h2>
     <% @articles.each do |article| %>
       <% unless article.archived? %>
-        <div class="article border-bottom my-2 mx-3" >
+        <div class=" border-bottom my-2 mx-3" >
           <h5><%= link_to article.title, article %></h5>
-          <p>Created on: <span class="create-date"><%= article.created_at %></span></p>
+          <p>Created on: <span><%= article.created_at %></span></p>
         </div>
       <% end %>
     <% end %>
