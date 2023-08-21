@@ -74,4 +74,10 @@ end
 #add-bootstrap5
 gem 'bootstrap', '~> 5.0'
 
+#add-gem-devise4.9
+gem 'devise', '~> 4.9', '>= 4.9.2'
+
+#add-gem-rubocop
+gem 'rubocop-rails', '~> 2.20', '>= 2.20.2', require: false
+
 
