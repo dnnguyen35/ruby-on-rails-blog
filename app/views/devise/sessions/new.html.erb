@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-4 mx-auto">
+        <h2 class="text-center">Sign In</h2>
+
+        <p class="alert text-center text-danger"><%= alert %></p>
+        
+        <div class="form-container p-4 border rounded">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group ">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: "form-control my-1", autofocus: true, autocomplete: "email" %>
+            </div>
+            
+            <div class="form-group my-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <%= f.label :password %>
+                <a href="#">Forgot Password</a>
+              </div>
+              <%= f.password_field :password, class: "form-control my-1", autocomplete: "current-password" %>
+            </div>
+            
+            <div class="form-group mt-5 mb-3">
+              <%= f.submit "Sign in", class: "btn btn-primary w-100" %>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="form-container border rounded text-center mt-5 py-3">
+          <p>New to Blog? <span><%= link_to "Create new account", new_user_registration_path, class: "text-decoration-none" %></span></p>
+        </div>
+      </div>
+    </div>
+  </div>

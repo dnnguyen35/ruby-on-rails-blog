@@ -12,19 +12,27 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-black">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand text-white mx-1" href="#">
-            Articles
-          </a>
-          <ul class="navbar-nav d-flex flex-row">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <a class="navbar-brand text-white mx-1" href="#">
+          Articles
+        </a>
+
+        <ul class="navbar-nav d-flex flex-row">
+          <% if user_signed_in? %>
             <li>
-              <a class="btn btn-outline-success text-white"  href="#">Sign In</a>
+              <span class="text-white"><%= current_user.full_name %></span>
+              <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-outline-success text-white mx-1", data: { "turbo-method": :delete} %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Sign in', new_user_session_path, class: "btn btn-outline-success text-white mx-1" %> 
             </li>
             <li>
-              <a class="btn btn-outline-success text-white mx-1" href="#">Sign Up</a>
+              <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-success text-white mx-1" %>
             </li>
-          </ul>
-        </div>
+          <% end %>
+        </ul>
+      </div>
     </nav>
 
     <main>
