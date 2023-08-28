@@ -1,12 +1,18 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Blog
+  # This is the main configuration file for the Blog application.
+  # It defines application-wide settings and configuration.
+  # The Blog application is a web-based blogging platform.
+  # Users can create, edit, and view blog posts, as well as leave comments.
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0

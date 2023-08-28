@@ -1,3 +1,11 @@
+# frozen_string_literal: true
+
+# The User model represents individual users of the application.
+# It can create articles, post comments, and has various attributes like email and username.
+# Users can be associated with articles they authored and comments they posted.
+
+# Common functionality provided by User includes associations with Article and Comment,
+# along with authentication-related methods and validations.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -15,5 +23,4 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-       
 end

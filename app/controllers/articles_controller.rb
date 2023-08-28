@@ -1,6 +1,10 @@
-class ArticlesController < ApplicationController
+# frozen_string_literal: true
 
-  http_basic_authenticate_with name: "nguyenduong", password: "nguyenduong", except: [:index, :show]
+# The ArticlesController handles all interactions related to the Article model.
+# It provides actions for creating, reading, updating, and deleting articles.
+# This controller communicates with the Article model and renders views to display article-related content to users.
+class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'nguyenduong', password: 'nguyenduong', except: %i[index show]
   def index
     @articles = Article.all
   end
@@ -45,8 +49,8 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :body, :status)
-    end
 
+  def article_params
+    params.require(:article).permit(:title, :body, :status)
+  end
 end
