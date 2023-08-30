@@ -6,7 +6,8 @@
 class ArticlesController < ApplicationController
   http_basic_authenticate_with name: 'nguyenduong', password: 'nguyenduong', except: %i[index show]
   def index
-    @articles = Article.all
+    require 'pagy/extras/bootstrap'
+    @pagy, @articles = pagy(Article.all, items: 1, size: [2, 2, 2, 2])
   end
 
   def show
