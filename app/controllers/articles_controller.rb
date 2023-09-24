@@ -4,14 +4,14 @@
 # It provides actions for creating, reading, updating, and deleting articles.
 # This controller communicates with the Article model and renders views to display article-related content to users.
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'nguyenduong', password: 'nguyenduong', except: %i[index show]
-  def index
-    require 'pagy/extras/bootstrap'
-    @pagy, @articles = pagy(Article.all, items: 1, size: [2, 2, 2, 2])
-  end
+  require 'pagy/extras/bootstrap'
 
-  def show
-    @article = Article.find(params[:id])
+  http_basic_authenticate_with name: 'nguyenduong', password: 'nguyenduong', except: %i[index show]
+
+  before_action :set_article, only: %i[show edit update destroy]
+
+  def index
+    @pagy, @articles = pagy(Article.all, items: 5)
   end
 
   def new
@@ -28,13 +28,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
-
   def update
-    @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
@@ -43,7 +37,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
 
     redirect_to root_path, status: :see_other
@@ -53,5 +46,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 end
