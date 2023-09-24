@@ -4,6 +4,7 @@
         <h2 class="text-center">Sign In</h2>
 
         <p class="alert text-center text-danger"><%= alert %></p>
+        <p class="alert text-center text-danger"><%= notice %></p>
         
         <div class="form-container p-4 border rounded">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -25,6 +26,7 @@
         
         <div class="form-container border rounded text-center mt-5 py-3">
           <p>New to Blog? <span><%= link_to "Create new account", new_user_registration_path, class: "text-decoration-none" %></span></p>
+          <p>Fogot password? <span><%= link_to "Click to reset", new_user_password_path, class: "text-decoration-none" %></span></p>
         </div>
       </div>
     </div>
