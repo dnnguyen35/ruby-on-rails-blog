@@ -8,4 +8,5 @@
 # formatting dates, handling user authentication and permissions, and simplifying
 # complex view logic.
 module ApplicationHelper
+  include Pagy::Frontend
 end
