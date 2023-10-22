@@ -1,0 +1,25 @@
+<div class="bg-info mb-5">
+  <h2 class=" container text-primary py-4 border-bottom ">
+    <span>
+      <a href="<%= root_path %>"><img src="<%= asset_path('chevron-left-solid.svg') %>" width="24" height="24"></a>
+    </span>
+    Personal Details
+  </h2> 
+</div>
+<div class="container">
+  <div class=" border-bottom my-2 mx-3" >
+    <p><strong>Email</strong></p>
+    <p class: "border rounded my-1"><%= @user.email %></p>
+  </div>
+  <div class=" border-bottom my-2 mx-3" >
+    <p><strong>First name</strong></p>
+    <p class: "border rounded my-1"><%= @user.first_name %></p>
+  </div>
+  <div class=" border-bottom my-2 mx-3" >
+    <p><strong>Last name</strong></p>
+    <p class: "border rounded my-1"><%= @user.last_name %></p>
+  </div>
+  <a class=" btn btn-primary my-3 rounded-pill border  text-center bg-info text-decoration-none text-primary" href="<%= edit_user_registration_path %>">
+    <strong>Edit Details</strong>
+  </a>
+</div>

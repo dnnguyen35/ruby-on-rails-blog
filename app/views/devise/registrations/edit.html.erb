@@ -1,0 +1,47 @@
+<div class="bg-info mb-5">
+  <h2 class=" container text-primary py-4 border-bottom ">
+    <span>
+      <a href="<%= :back %>"><img src="<%= asset_path('chevron-left-solid.svg') %>" width="24" height="24"></a>
+    </span>
+    Edit Details
+  </h2> 
+</div>
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <div class="my-5 mx-3">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control my-1", autofocus: true, autocomplete: "email" %>
+      <% if resource.errors[:email].any? %>
+        <div class="text-danger text-capitalize">
+          <%= resource.errors[:email].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="my-5 mx-3">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: "form-control my-1" %>
+      <% if resource.errors[:first_name].any? %>
+        <div class="text-danger text-capitalize">
+          <%= resource.errors[:first_name].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="my-5 mx-3">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: "form-control my-1"%>
+      <% if resource.errors[:last_name].any? %>
+        <div class="text-danger text-capitalize">
+          <%= resource.errors[:last_name].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mt-5 mb-3">
+      <%= f.submit "Save&Update", class: "btn btn-primary bg-info border w-100 text-primary rounded-pill" %>
+    </div>
+  <% end %>
+</div>
+    
