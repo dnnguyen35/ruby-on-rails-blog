@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
   validates :password_confirmation, presence: true, on: :create
   validates :password, confirmation: true
   validates :first_name, presence: true
