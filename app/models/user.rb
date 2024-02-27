@@ -10,9 +10,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  attr_accessor :skip_password_validation
+
   validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
-  validates :password_confirmation, presence: true, on: :create
+  validates :password, presence: true, length: { minimum: 6 }, unless: :skip_password_validation
+  validates :password_confirmation, presence: true, unless: :skip_password_validation
   validates :password, confirmation: true
   validates :first_name, presence: true
   validates :last_name, presence: true

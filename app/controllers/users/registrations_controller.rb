@@ -4,14 +4,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_update_params, only: [:update_resource]
 
+  def edit_password
+    @user = current_user
+  end
+
+  def update_password
+    @user = current_user
+    if @user.update_with_password(password_params)
+      bypass_sign_in(@user)
+      redirect_to user_path(@user)
+    else
+      render :edit_password, status: :unprocessable_entity
+    end
+  end
+
   def update_resource(resource, params)
+    resource.skip_password_validation = true
     resource.update_without_password(params)
   end
 
   protected
 
   def after_update_path_for(resource)
-      user_path(current_user)
+    user_path(current_user)
   end
 
   # GET /resource/sign_up
@@ -69,4 +84,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation, :current_password)
+  end
 end
