@@ -82,3 +82,6 @@ gem 'rubocop-rails', '~> 2.20', '>= 2.20.2', require: false
 
 # add-gem-pagy
 gem 'pagy', '~> 6.0', '>= 6.0.4'
+
+# add-gem-mini_magick
+gem 'mini_magick', '~> 4.12'
